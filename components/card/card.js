@@ -1,4 +1,5 @@
 export function createCharacterCard(characterData) {
+
   const newCard = document.createElement("li");
   newCard.classList.add("card");
   newCard.innerHTML = `
