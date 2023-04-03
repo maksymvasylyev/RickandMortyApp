@@ -35,14 +35,14 @@ async function fetchCharacters(page, searchQuery) {
   }
 }
 
-fetchCharacters(1);
+fetchCharacters(1,"");
 
 nextButton.addEventListener("click",() => {
   if (page < maxPage){
     cardContainer.innerHTML="";
     page++;
     console.log(page);
-    fetchCharacters(page);
+    fetchCharacters(page, "");
     pagination.innerHTML=`
      ${page}/${maxPage}
     `
@@ -57,7 +57,7 @@ prevButton.addEventListener("click", () =>{
       cardContainer.innerHTML="";
       page--;
       console.log(page);
-      fetchCharacters(page);
+      fetchCharacters(page, "");
       pagination.innerHTML=`
      ${page}/${maxPage}
     `
