@@ -15,12 +15,6 @@ const maxPage = 1;
 const page = 1;
 const searchQuery = "";
 
-const id = 2;
-const name = "Peter";
-const status = "Alive";
-const type = "Alien";
-const occurrences = 55;
-
 async function fetchCharacters() {
   const urlApi = "https://rickandmortyapi.com/api/character";
   try {
@@ -29,9 +23,7 @@ async function fetchCharacters() {
       console.log("Something went wrong");
     } else {
       const data = await response.json();
-      //return data;
       data.results.forEach((values) => {
-        //console.log(values);
         const myCard = createCharacterCard(values);
         cardContainer.append(myCard);
       });
