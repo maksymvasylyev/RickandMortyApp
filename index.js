@@ -15,4 +15,9 @@ const maxPage = 1;
 const page = 1;
 const searchQuery = "";
 
-cardContainer.append(createCharacterCard());
+const id = 2;
+const name = "Peter";
+const status = "Alive";
+const type = "Alien";
+const occurrences = 55;
+cardContainer.append(createCharacterCard(id, name, status, type, occurrences));
