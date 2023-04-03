@@ -4,7 +4,7 @@ const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
   '[data-js="search-bar-container"]'
 );
-const searchBar = document.querySelector('[data-js="search-bar"]');
+export const searchBar = document.querySelector('[data-js="search-bar"]');
 export const navigation = document.querySelector('[data-js="navigation"]');
 export const prevButton = document.querySelector('[data-js="button-prev"]');
 export const nextButton = document.querySelector('[data-js="button-next"]');
@@ -15,8 +15,8 @@ let maxPage = 1;
 export let page = 1;
 const searchQuery = "";
 
-async function fetchCharacters(page) {
-  const urlApi = `https://rickandmortyapi.com/api/character?page=${page}`;
+async function fetchCharacters(page, searchQuery) {
+  const urlApi = `https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`;
   try {
     const response = await fetch(urlApi);
     if (!response.ok) {
@@ -66,4 +66,11 @@ prevButton.addEventListener("click", () =>{
     }
     
     
+});
+searchBar.addEventListener("submit", (event) => {
+  event.preventDefault();
+  cardContainer.innerHTML = "";
+const searchQuery = event.target.elements.query.value;  
+  fetchCharacters(page, searchQuery);
+
 });
