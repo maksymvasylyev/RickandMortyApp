@@ -20,4 +20,25 @@ const name = "Peter";
 const status = "Alive";
 const type = "Alien";
 const occurrences = 55;
-cardContainer.append(createCharacterCard(id, name, status, type, occurrences));
+
+async function fetchCharacters() {
+  const urlApi = "https://rickandmortyapi.com/api/character";
+  try {
+    const response = await fetch(urlApi);
+    if (!response.ok) {
+      console.log("Something went wrong");
+    } else {
+      const data = await response.json();
+      //return data;
+      data.results.forEach((values) => {
+        //console.log(values);
+        const myCard = createCharacterCard(values);
+        cardContainer.append(myCard);
+      });
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+fetchCharacters();
