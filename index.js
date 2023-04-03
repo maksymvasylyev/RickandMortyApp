@@ -36,12 +36,15 @@ async function fetchCharacters(page) {
 fetchCharacters(1);
 
 nextButton.addEventListener("click",() => {
+    cardContainer.innerHTML="";
     page++;
     console.log(page);
     fetchCharacters(page);
 });
 
 prevButton.addEventListener("click", () =>{
+    cardContainer.innerHTML="";
     page--;
     console.log(page);
+    fetchCharacters(page);
 });
